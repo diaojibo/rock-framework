@@ -5,7 +5,7 @@ package com.rocklct.framework;
  * Created by Rocklct on 2017/9/9.
  */
 public interface ConfigConstant {
-    String CONFIG_FILE = "smart.properties";
+    String CONFIG_FILE = "rock.properties";
 
     String JDBC_DRIVER = "rock.framework.jdbc.driver";
     String JDBC_URL = "rock.framework.jdbc.url";
