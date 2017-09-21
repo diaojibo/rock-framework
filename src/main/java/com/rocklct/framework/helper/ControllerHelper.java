@@ -5,6 +5,8 @@ import com.rocklct.framework.bean.Handler;
 import com.rocklct.framework.bean.Request;
 import com.rocklct.framework.util.ArrayUtil;
 import com.rocklct.framework.util.CollectionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -20,6 +22,8 @@ public final class ControllerHelper {
      * This map is to store the mapping relationship between Request and Handler
      */
     private static final Map<Request, Handler> Action_Map = new HashMap<Request, Handler>();
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConfigHelper.class);
+
 
     static {
         /**

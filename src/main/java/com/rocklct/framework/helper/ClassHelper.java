@@ -3,6 +3,8 @@ package com.rocklct.framework.helper;
 import com.rocklct.framework.annotation.Controller;
 import com.rocklct.framework.annotation.Service;
 import com.rocklct.framework.util.ClassUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,6 +15,7 @@ import java.util.Set;
 public final class ClassHelper {
 
     private static final Set<Class<?>> CLASS_SET;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConfigHelper.class);
 
     static {
         String basePackage = ConfigHelper.getAppBasePackage();
@@ -30,6 +33,7 @@ public final class ClassHelper {
         for (Class<?> cls : CLASS_SET) {
             if (cls.isAnnotationPresent(Service.class)) {
                 classSet.add(cls);
+                LOGGER.info(cls.getName());
             }
         }
         return classSet;
@@ -41,6 +45,7 @@ public final class ClassHelper {
         for (Class<?> cls : CLASS_SET) {
             if (cls.isAnnotationPresent(Controller.class)) {
                 classSet.add(cls);
+
             }
         }
         return classSet;

@@ -21,6 +21,7 @@ import java.lang.reflect.Method;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Created by Rocklct on 2017/9/18.
@@ -51,6 +52,7 @@ public class DispatcherServlet extends HttpServlet {
         // get requestMethod and requestPath
         String requestMethod = req.getMethod().toLowerCase();
         String requestPath = req.getPathInfo();
+
 
         // get Action Handler
         Handler handler = ControllerHelper.getHandler(requestMethod, requestPath);
@@ -110,6 +112,7 @@ public class DispatcherServlet extends HttpServlet {
                         }
                         req.getRequestDispatcher(ConfigHelper.getAppJspPath() + path)
                                 .forward(req, resp);
+
                     }
                 }
             } else if (result instanceof Data) {
