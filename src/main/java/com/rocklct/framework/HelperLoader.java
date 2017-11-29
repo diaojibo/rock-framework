@@ -1,10 +1,7 @@
 package com.rocklct.framework;
 
 import com.rocklct.framework.annotation.Controller;
-import com.rocklct.framework.helper.BeanHelper;
-import com.rocklct.framework.helper.ClassHelper;
-import com.rocklct.framework.helper.ControllerHelper;
-import com.rocklct.framework.helper.IocHelper;
+import com.rocklct.framework.helper.*;
 import com.rocklct.framework.util.ClassUtil;
 
 /**
@@ -16,7 +13,8 @@ public final class HelperLoader {
                 ClassHelper.class,
                 BeanHelper.class,
                 IocHelper.class,
-                ControllerHelper.class
+                ControllerHelper.class,
+                AopHelper.class
         };
 
         for (Class<?> cls : classList) {
