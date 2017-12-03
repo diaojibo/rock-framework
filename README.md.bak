@@ -17,11 +17,11 @@ Rock Framework是本人练手做的一个简易 Java Web框架(基于Servlet3.0�
 
 内部初始化流程图
 
-![](image/flow1.jpg)
+![](image/flow1.png)
 
 框架执行时流程图
 
-![](image/flow0.jpg)
+![](image/flow0.png)
 
 
 ## 使用(测试)说明
