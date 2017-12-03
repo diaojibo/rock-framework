@@ -4,6 +4,8 @@ import com.rocklct.framework.annotation.Inject;
 import com.rocklct.framework.util.ArrayUtil;
 import com.rocklct.framework.util.CollectionUtil;
 import com.rocklct.framework.util.ReflectionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -12,6 +14,8 @@ import java.util.Map;
  * Created by Rocklct on 2017/9/13.
  */
 public final class IocHelper {
+
+    private static Logger LOGGER = LoggerFactory.getLogger(IocHelper.class);
 
     static {
 
@@ -34,12 +38,17 @@ public final class IocHelper {
                             //search the corresponding instance from the beanMap
                             Object beanFieldInstance = beanMap.get(beanFieldClass);
 
+                            LOGGER.debug("ioc filed:" + beanField.getName());
+
                             // if the beanService exists
                             if (beanFieldInstance != null) {
 
                                 //use ReflectionUtil to implement dependency injection
                                 ReflectionUtil.setField(beanInstance, beanField
                                         , beanFieldInstance);
+
+                                LOGGER.debug("ioc filed set complete from:" + beanInstance.getClass().getName());
+                                LOGGER.debug("ioc filed set complete to:" + beanFieldInstance.getClass().getName());
                             }
 
                         }

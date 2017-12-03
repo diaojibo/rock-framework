@@ -15,7 +15,7 @@ import java.util.*;
 /**
  * Created by Rocklct on 2017/11/27.
  */
-public class AopHelper {
+public final class AopHelper {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AopHelper.class);
 
@@ -26,7 +26,12 @@ public class AopHelper {
             for (Map.Entry<Class<?>, List<Proxy>> targetEntry : targetMap.entrySet()) {
                 Class<?> targetClass = targetEntry.getKey();
                 List<Proxy> proxyList = targetEntry.getValue();
+                LOGGER.debug("aop load:" + targetClass.getName() + "\n");
+                for(Proxy dproxy:proxyList){
+                    LOGGER.debug("aop load proxy:" + dproxy.getClass().getName()+"\n");
+                }
                 Object proxy = ProxyManager.createProxy(targetClass, proxyList);
+                LOGGER.debug("aop load all proxy success!\n");
                 BeanHelper.setBean(targetClass, proxy);
             }
         } catch (Exception e) {

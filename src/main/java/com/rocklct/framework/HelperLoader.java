@@ -12,9 +12,9 @@ public final class HelperLoader {
         Class<?>[] classList = {
                 ClassHelper.class,
                 BeanHelper.class,
-                IocHelper.class,
                 ControllerHelper.class,
-                AopHelper.class
+                AopHelper.class,
+                IocHelper.class
         };
 
         for (Class<?> cls : classList) {

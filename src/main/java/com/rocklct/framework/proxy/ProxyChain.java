@@ -1,6 +1,8 @@
 package com.rocklct.framework.proxy;
 
 import net.sf.cglib.proxy.MethodProxy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -10,6 +12,8 @@ import java.util.List;
  * Created by Rocklct on 2017/9/25.
  */
 public class ProxyChain {
+
+    private static Logger LOGGER = LoggerFactory.getLogger(ProxyChain.class);
 
     private final Class<?> targetClass;
     private final Object targetObject;
@@ -48,6 +52,7 @@ public class ProxyChain {
         if (proxyIndex < proxyList.size()) {
             methodResult = proxyList.get(proxyIndex++).doProxy(this);
         } else {
+            LOGGER.debug("prepare to invoke super");
             methodResult = methodProxy.invokeSuper(targetObject, methodParams);
         }
 

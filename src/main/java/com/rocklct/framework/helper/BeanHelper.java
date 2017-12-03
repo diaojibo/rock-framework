@@ -1,6 +1,8 @@
 package com.rocklct.framework.helper;
 
 import com.rocklct.framework.util.ReflectionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,12 +15,15 @@ public class BeanHelper {
 
     private static final Map<Class<?>, Object> BEAN_MAP = new HashMap<Class<?>, Object>();
 
+    private static Logger LOGGER = LoggerFactory.getLogger(BeanHelper.class);
+
     static {
         Set<Class<?>> beanClassSet = ClassHelper.getBeanClassSet();
 
         for (Class<?> beanClass : beanClassSet) {
             Object obj = ReflectionUtil.newInstance(beanClass);
             BEAN_MAP.put(beanClass, obj);
+            LOGGER.debug("putInstance: " + beanClass.getName());
         }
     }
 
